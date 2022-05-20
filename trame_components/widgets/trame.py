@@ -1,6 +1,19 @@
 from trame_client.widgets.core import AbstractElement
 from trame_components import module
 
+__all__ = [
+    "ClientStateChange",
+    "ClientTriggers",
+    "LifeCycleMonitor",
+    "MouseTrap",
+    "SizeObserver",
+    "FloatCard",
+    "ListBrowser",
+    "GitTree",
+    "XaiHeatMap",
+    "XaiImage",
+]
+
 
 class HtmlElement(AbstractElement):
     def __init__(self, _elem_name, children=None, **kwargs):
@@ -13,6 +26,13 @@ class HtmlElement(AbstractElement):
 # TrameClientStateChange
 # -----------------------------------------------------------------------------
 class ClientStateChange(HtmlElement):
+    """
+    Allow the client side to trigger an event when a state element change.
+
+    :param value: Name of the state variable to monitor
+    :param change: Event triggered when state[value] change
+    """
+
     def __init__(self, children=None, **kwargs):
         super().__init__("trame-client-state-change", children, **kwargs)
         self._attr_names += ["value"]
@@ -23,6 +43,13 @@ class ClientStateChange(HtmlElement):
 # TrameClientTriggers
 # -----------------------------------------------------------------------------
 class ClientTriggers(HtmlElement):
+    """
+    Allow to trigger an event on the client side
+
+    :param ref: Identifier for the client side DOM elem
+    :param **kwargs: List of events to registers with their callbacks
+    """
+
     def __init__(self, ref="trame_triggers", children=None, **kwargs):
         self.__name = ref
         super().__init__("trame-client-triggers", children=None, ref=ref, **kwargs)
@@ -30,6 +57,11 @@ class ClientTriggers(HtmlElement):
         self._event_names += list(kwargs.keys())
 
     def call(self, method, *args):
+        """
+        Perform the call on the client
+
+        :param method: Key used in the kwargs at construction time
+        """
         self.server.js_call(self.__name, "emit", method, *args)
 
 
@@ -37,6 +69,21 @@ class ClientTriggers(HtmlElement):
 # TrameLifeCycleMonitor
 # -----------------------------------------------------------------------------
 class LifeCycleMonitor(HtmlElement):
+    """
+    LifeCycleMonitor is a debug purpose tool to validate a sub-tree get the proper
+    expected life cycle event.
+
+    This component allow to print into the client side console when any of the
+    monitored event happen.
+
+    :param name: User specific text to easily identify which component the event
+                was comming from.
+    :param type: console[type](...) so you can use 'log', 'error', 'info', 'warn'
+    :param value: Another value that is printed when an event occur
+    :param events: List of events to monitor such as created, beforeMount,
+        mounted, beforeUpdate, updated, beforeDestroy, destroyed
+    """
+
     def __init__(self, children=None, **kwargs):
         super().__init__("trame-life-cycle-monitor", children, **kwargs)
         self._attr_names += [
@@ -51,12 +98,32 @@ class LifeCycleMonitor(HtmlElement):
 # TrameMouseTrap
 # -----------------------------------------------------------------------------
 class MouseTrap(HtmlElement):
+    """
+    MouseTrap allow to capture client side event and bind them
+    to server side trigger.
+
+    :param **kwargs: The keys are meant to be assigned to events.
+
+    .. code-block::
+
+        widget = MouseTrap(Save=save_fn, Open=open_fn, Edit=edit_fn, Escape=exit_fn)
+
+        widget.bind(["ctrl+s", "mod+s"], "Save", stop_propagation=True)
+        widget.bind(["ctrl+o", "mod+o"], "Open", stop_propagation=True)
+        widget.bind("mod+e", "Edit")
+        widget.bind("esc", "Escape")
+
+    """
+
     def __init__(self, **kwargs):
         super().__init__("trame-mouse-trap", **kwargs)
         self._attributes["_trame_mapping"] = ':mapping="trame__mousetrap"'
         self._event_names += [*kwargs.keys()]
 
     def bind(self, keys, event_name, stop_propagation=False, listen_to=None):
+        """
+        Create binding for key stroke to event name.
+        """
         self._event_names += [event_name]
         entry = {
             "keys": keys,
@@ -77,6 +144,13 @@ class MouseTrap(HtmlElement):
 # TrameSizeObserver
 # -----------------------------------------------------------------------------
 class SizeObserver(HtmlElement):
+    """
+    SizeObserver allow to monitor the space available in the UI and bind that
+    information onto a state variable.
+
+    :param _name: Name of the state variable to bound the component size to
+    """
+
     def __init__(self, _name, **kwargs):
         super().__init__("trame-size-observer", name=_name, **kwargs)
         self._attr_names += [
@@ -266,6 +340,22 @@ class GitTree(HtmlElement):
 
 
 class XaiHeatMap(HtmlElement):
+    """
+    XaiHeatMap create a visual representation of a numerical array
+    representing a 2D image.
+
+    :param heatmap: Array to display
+    :param shape: expect [width, height]
+    :param color_mode: full, maxSym, minSym, positive, negative, custom (default: full)
+    :param color_range: Range to be used when `color_mode="custom"`
+    :param color_preset: Preset name from `vtk.js <https://github.com/Kitware/vtk-js/blob/master/Sources/Rendering/Core/ColorTransferFunction/ColorMaps.json>`_
+
+    Events:
+
+    :param hover: event triggered when moving over the map
+    :param enter: event triggered when entring the map area
+    """
+
     def __init__(self, children=None, **kwargs):
         super().__init__("trame-xai-heat-map", children, **kwargs)
         self._attr_names += [
@@ -287,6 +377,33 @@ class XaiHeatMap(HtmlElement):
 
 
 class XaiImage(HtmlElement):
+    """
+    XaiImage show an image with a XaiHeatMap as overlay
+
+    :param src: URL to the image to display
+    :param max_height: Limit the size of the image vertically
+    :param max_width: Limit the size of the image horizontally
+    :param width: If present use as style.width = "..."
+    :param colors: Palette to use for areas
+    :param areas: (optional) Array containing bounding box info
+    :param area_key: (optional) Key in the area[i][key] that id the area
+    :param area_style: (optional) css style to apply (default: { stroke-width: 3, rx: 10 })
+    :param area_selected: (optional) Array of area ids
+    :param area_selected_opacity: Opacity to use for selected areas 0-1
+    :param area_opacity: Opacity to use for all areas 0-1
+    :param heatmaps: Dict of arrays
+    :param heatmap_opacity: Opacity of the heatmap overlay
+    :param heatmap_color_preset: Preset name from `vtk.js <https://github.com/Kitware/vtk-js/blob/master/Sources/Rendering/Core/ColorTransferFunction/ColorMaps.json>`_
+    :param heatmap_color_range: Range to be used when `heatmap_color_mode="custom"`
+    :param heatmap_active: Key in heatmaps to select
+    :param heatmap_color_mode: full, maxSym, minSym, positive, negative, custom (default: full)
+
+    Events:
+
+    :param hover: event triggered when moving over the map
+    :param enter: event triggered when entring the map area
+    """
+
     def __init__(self, children=None, **kwargs):
         super().__init__("trame-xai-image", children, **kwargs)
         self._attr_names += [
