@@ -3,14 +3,30 @@ export default {
   props: {
     value: {
       type: String,
-      default: '',
+    },
+    immediate: {
+      type: Boolean,
+      default: false,
+    },
+    triggerChangeOnCreate: {
+      type: Boolean,
+      default: false,
     },
   },
   watch: {
     value(current) {
-      this.$nextTick(() => {
+      if (this.immediate) {
         this.$emit('change', current);
-      });
+      } else {
+        this.$nextTick(() => {
+          this.$emit('change', current);
+        });
+      }
     },
+  },
+  created() {
+    if (this.triggerChangeOnCreate) {
+      this.$emit('change', this.value);
+    }
   },
 };

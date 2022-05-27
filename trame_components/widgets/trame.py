@@ -30,12 +30,22 @@ class ClientStateChange(HtmlElement):
     Allow the client side to trigger an event when a state element change.
 
     :param value: Name of the state variable to monitor
+    :type value: str
+    :param immediate: Trigger change right away rather than at nextTick (default: False)
+    :type immediate: bool
+    :param trigger_on_create: If set to true, the change event will be triggered when the client start. (default: False)
+    :type trigger_on_create: bool
     :param change: Event triggered when state[value] change
+    :type change: Function or JS expression (event)
     """
 
     def __init__(self, children=None, **kwargs):
         super().__init__("trame-client-state-change", children, **kwargs)
-        self._attr_names += ["value"]
+        self._attr_names += [
+            ("value", ":value"),
+            "immediate",
+            ("trigger_on_create", "triggerChangeOnCreate"),
+        ]
         self._event_names += ["change"]
 
 
