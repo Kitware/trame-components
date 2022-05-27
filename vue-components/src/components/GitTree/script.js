@@ -63,7 +63,7 @@ function assignNodePosition(model, node, x) {
     // This node is a leaf, keep track of it for future processing
     model.leaves.push(node);
   } else {
-    // Garanty unique branching order logic
+    // Guaranty unique branching order logic
     children.sort(sortById);
 
     // Move down the tree with the most right side of the tree

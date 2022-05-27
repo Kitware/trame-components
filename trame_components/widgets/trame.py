@@ -87,7 +87,7 @@ class LifeCycleMonitor(HtmlElement):
     monitored event happen.
 
     :param name: User specific text to easily identify which component the event
-                was comming from.
+                was coming from.
     :param type: console[type](...) so you can use 'log', 'error', 'info', 'warn'
     :param value: Another value that is printed when an event occur
     :param events: List of events to monitor such as created, beforeMount,

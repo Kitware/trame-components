@@ -3,7 +3,7 @@ trame-components: trame vue.js widgets
 
 trame-components extend trame **widgets** with helper components that are core to trame widgets.
 
-This package is not supposed to be used by iteself but rather should come as a dependency of **trame**.
+This package is not supposed to be used by itself but rather should come as a dependency of **trame**.
 For any specificity, please refer to `the trame documentation <https://kitware.github.io/trame/>`_.
 
 
