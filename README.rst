@@ -1,6 +1,10 @@
 trame-components: trame vue.js widgets
 ===========================================================================
 
+.. image:: https://github.com/Kitware/trame-components/actions/workflows/test_and_release.yml/badge.svg
+    :target: https://github.com/Kitware/trame-components/actions/workflows/test_and_release.yml
+    :alt: Test and Release
+
 trame-components extend trame **widgets** with helper components that are core to trame widgets.
 
 This package is not supposed to be used by itself but rather should come as a dependency of **trame**.
