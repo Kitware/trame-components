@@ -27,7 +27,7 @@ class HtmlElement(AbstractElement):
 # -----------------------------------------------------------------------------
 class ClientStateChange(HtmlElement):
     """
-    Allow the client side to trigger an event when a state element change.
+    Allow the client side to trigger an event when a state element changes.
 
     :param value: Name of the state variable to monitor
     :type value: str
