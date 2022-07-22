@@ -1,7 +1,7 @@
 // Generic global methods -----------------------------------------------------
 
 function sortById(a, b) {
-  return Number(a.id) < Number(b.id);
+  return Number(a.id) - Number(b.id);
 }
 
 function generateModel(list, rootId) {
