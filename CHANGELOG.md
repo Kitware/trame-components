@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v2.0.3 (2022-07-22)
+### Fix
+* **spelling:** This is a test for semantic-release ([`e3f714f`](https://github.com/Kitware/trame-components/commit/e3f714f06a1ab1b277f27428b7e5c3d410343e25))
+
 ## v2.0.2 (2022-07-22)
 ### Fix
 * **GitTree:** Proper sort algo ([`1291cad`](https://github.com/Kitware/trame-components/commit/1291cadec09b840a0081ca8fb68355743c75046f))
