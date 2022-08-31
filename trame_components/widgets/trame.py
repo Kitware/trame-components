@@ -378,6 +378,8 @@ class XaiHeatMap(HtmlElement):
         self._event_names += [
             "hover",
             "enter",
+            ("color_range", "colorRange"),
+            ("full_range", "fullRange"),
         ]
 
 
@@ -438,6 +440,7 @@ class XaiImage(HtmlElement):
         self._event_names += [
             ("area_selection_change", "areaSelectionChange"),
             ("color_range", "colorRange"),
+            ("full_range", "fullRange"),
             "hover",
             "enter",
         ]

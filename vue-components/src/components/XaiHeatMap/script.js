@@ -56,6 +56,7 @@ export default {
           max = v;
         }
       }
+      this.$emit('fullRange', [min, max]);
       return [min, max];
     },
     maxSymRange() {
