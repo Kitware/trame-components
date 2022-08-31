@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v2.0.4 (2022-08-31)
+### Fix
+* **event:** Add fullRange event ([`756dc5d`](https://github.com/Kitware/trame-components/commit/756dc5df9a729d74533dfb78f3e75a13b62620de))
+
 ## v2.0.3 (2022-07-22)
 ### Fix
 * **spelling:** This is a test for semantic-release ([`e3f714f`](https://github.com/Kitware/trame-components/commit/e3f714f06a1ab1b277f27428b7e5c3d410343e25))
