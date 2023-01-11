@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v2.1.0 (2023-01-11)
+### Feature
+* **Cursor:** Add Cursor component to drive cursor style ([`6093f51`](https://github.com/Kitware/trame-components/commit/6093f51e92cf48191ff085d5b62f1a3119dc9cd3))
+
 ## v2.0.4 (2022-08-31)
 ### Fix
 * **event:** Add fullRange event ([`756dc5d`](https://github.com/Kitware/trame-components/commit/756dc5df9a729d74533dfb78f3e75a13b62620de))
