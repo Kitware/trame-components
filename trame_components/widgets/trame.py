@@ -4,6 +4,7 @@ from trame_components import module
 __all__ = [
     "ClientStateChange",
     "ClientTriggers",
+    "Cursor",
     "LifeCycleMonitor",
     "MouseTrap",
     "SizeObserver",
@@ -73,6 +74,21 @@ class ClientTriggers(HtmlElement):
         :param method: Key used in the kwargs at construction time
         """
         self.server.js_call(self.__name, "emit", method, *args)
+
+
+# -----------------------------------------------------------------------------
+# TrameClientTriggers
+# -----------------------------------------------------------------------------
+class Cursor(HtmlElement):
+    """Allow to define the cursor of the parent component based on an active index and the list of css cursor names.
+
+    :param active: index to selection the current cursor
+    :param cursors: Array of available cursor to chose from
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__("trame-cursor", **kwargs)
+        self._attr_names += ["active", "cursors"]
 
 
 # -----------------------------------------------------------------------------
