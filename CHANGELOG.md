@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v2.1.1 (2023-02-23)
+### Fix
+* **version:** Add __version__ ([`d7ca147`](https://github.com/Kitware/trame-components/commit/d7ca147820b88c87fe3c1cbb931c23858e5c8bc2))
+
 ## v2.1.0 (2023-01-11)
 ### Feature
 * **Cursor:** Add Cursor component to drive cursor style ([`6093f51`](https://github.com/Kitware/trame-components/commit/6093f51e92cf48191ff085d5b62f1a3119dc9cd3))
