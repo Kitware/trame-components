@@ -7,8 +7,7 @@ serve_path = str(Path(__file__).with_name("serve").resolve())
 serve = {"__trame_components": serve_path}
 
 # List of JS files to load (usually from the serve path above)
-scripts = ["__trame_components/trame-components.umd.min.js"]
-styles = ["__trame_components/trame-components.css"]
+scripts = ["__trame_components/trame-components.umd.js"]
 
 # List of Vue plugins to install/load
 vue_use = ["trame_components"]

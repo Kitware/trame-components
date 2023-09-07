@@ -4,6 +4,7 @@
 
 # OS files
 .DS_Store
+.task
 
 # Editor directories and files
 .idea

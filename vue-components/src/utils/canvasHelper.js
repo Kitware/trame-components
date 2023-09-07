@@ -1,9 +1,9 @@
-const WORK_CANVAS = document.createElement('canvas');
+const WORK_CANVAS = document.createElement("canvas");
 WORK_CANVAS.width = 100;
 WORK_CANVAS.height = 100;
 
 export function getPixels(width, height, values, convert) {
-  const ctx = WORK_CANVAS.getContext('2d');
+  const ctx = WORK_CANVAS.getContext("2d");
   const rawPixels = ctx.createImageData(width, height);
   for (let j = 0; j < height; j++) {
     for (let i = 0; i < width; i++) {

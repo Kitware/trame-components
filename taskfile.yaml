@@ -1,0 +1,99 @@
+version: '3'
+
+tasks:
+  venv:
+    cmds:
+      - python3.9 -m venv .venv 
+      - |
+        source .venv/bin/activate
+        pip install -U pip 
+        pip install trame trame-client trame-server trame-vuetify black pre-commit
+        pip install .
+        pre-commit install
+    status:
+      - test -d .venv
+
+  py-lint:
+    internal: true
+    cmds:
+      - |
+        source .venv/bin/activate
+        python -m black trame_components trame examples
+  
+  web-build:
+    internal: true
+    dir: vue-components
+    deps: [web-setup]
+    cmds:
+      - npm run lint
+      - npm run build
+    sources:
+      - src/**/*.js
+    generates:
+      - ../trame_components/module/serve/trame-components.umd.js
+
+  web-lint:
+    internal: true
+    deps: [web-setup]
+    dir: vue-components
+    cmds:
+      - npm run lint
+
+  web-setup:
+    internal: true
+    dir: vue-components
+    cmds:
+      - npm i
+    sources:
+      - package.json
+    generates:
+      - node_modules/.package-lock.json
+
+  web:
+    deps: [web-build]
+    cmds:
+      - |
+        source .venv/bin/activate
+        pip install .
+    sources:
+      - trame_components/module/serve/trame-components.umd.js
+      - trame_components/**/*.py
+    generates:
+      - .venv/lib/python3.9/site-packages/trame_components/__init__.py
+
+  run:
+    internal: true
+    deps: [web]
+    env:
+      VUE_VERSION: vue{{.VUE}}
+    cmds:
+      - |
+        source .venv/bin/activate
+        python ./examples/{{.FILE}}.py --server
+
+  run2:
+    cmds:
+      - task: run
+        vars:
+          VUE: 2        
+      
+  run3:
+    cmds:
+      - task: run
+        vars:
+          VUE: 3
+
+  check:
+    cmds:
+      - |
+        source .venv/bin/activate
+        pre-commit run --all-files
+  
+  lint:
+    deps: [web-lint, py-lint]
+
+  clean:
+    cmds:
+      - rm -rf .venv
+      - rm -rf vue-components/node_modules
+  

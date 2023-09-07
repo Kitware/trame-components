@@ -1,7 +1,0 @@
-.regularText {
-    font-family: sans-serif;
-}
-
-.regularText::selection {
-  background-color: transparent;
-}
