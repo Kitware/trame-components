@@ -16,15 +16,18 @@ export default {
   },
   emits: ["change"],
   setup(props, { emit }) {
-    watch(props.value, (v) => {
-      if (props.immediate) {
-        emit("change", v);
-      } else {
-        nextTick(() => {
+    watch(
+      () => props.value,
+      (v) => {
+        if (props.immediate) {
           emit("change", v);
-        });
+        } else {
+          nextTick(() => {
+            emit("change", v);
+          });
+        }
       }
-    });
+    );
     if (props.triggerChangeOnCreate) {
       emit("change", props.value);
     }
