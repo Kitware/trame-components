@@ -1,4 +1,4 @@
-const { inject, ref, onBeforeMount, onBeforeUnmount } = window.Vue;
+const { inject, ref, onMounted, onBeforeUnmount } = window.Vue;
 
 export default {
   props: {
@@ -29,7 +29,7 @@ export default {
 
     const sizeObserver = new ResizeObserver(resize);
 
-    onBeforeMount(() => {
+    onMounted(() => {
       sizeObserver.observe(elem.value);
     });
 
