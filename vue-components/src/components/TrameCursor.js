@@ -20,14 +20,15 @@ export default {
     }
 
     const activeCursor = computed(
-      () => props.cursor[props.active] || "default"
+      () => props.cursors[props.active] || "default"
     );
-    watch(activeCursor, updateCursor);
+    watch(() => activeCursor.value, updateCursor);
 
-    onMounted(() => updateCursor(activeCursor));
+    onMounted(() => updateCursor(activeCursor.value));
     onBeforeUnmount(() => updateCursor("default"));
 
     return {
+      elem,
       activeCursor,
       updateCursor,
     };
