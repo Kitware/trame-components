@@ -118,6 +118,15 @@ class LifeCycleMonitor(HtmlElement):
             "value",
             "events",
         ]
+        self._event_names += [
+            "created",
+            ("before_mount", "beforeMount"),
+            "mounted",
+            ("before_update", "beforeUpdate"),
+            "updated",
+            ("before_destroy", "beforeDestroy"),
+            "destroyed",
+        ]
 
 
 # -----------------------------------------------------------------------------

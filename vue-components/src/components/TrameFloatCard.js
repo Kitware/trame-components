@@ -128,12 +128,15 @@ export default {
       document.addEventListener("mousemove", onMouseMove);
     }
 
-    watch(props.location, (pos) => {
-      if (lastUpdate !== JSON.stringify(pos)) {
-        [left.value, top.value] = pos;
-        lastUpdate = JSON.stringify(pos);
+    watch(
+      () => props.location,
+      (pos) => {
+        if (lastUpdate !== JSON.stringify(pos)) {
+          [left.value, top.value] = pos;
+          lastUpdate = JSON.stringify(pos);
+        }
       }
-    });
+    );
 
     const positionStyle = computed(() => {
       return {
