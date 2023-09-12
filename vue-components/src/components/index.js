@@ -7,6 +7,7 @@ import TrameLifeCycleMonitor from "./TrameLifeCycleMonitor";
 import TrameListBrowser from "./TrameListBrowser";
 import TrameMouseTrap from "./TrameMouseTrap";
 import TrameSizeObserver from "./TrameSizeObserver";
+import TrameXaiHeatMap from "./TrameXaiHeatMap";
 
 export default {
   TrameClientStateChange,
@@ -18,4 +19,5 @@ export default {
   TrameListBrowser,
   TrameMouseTrap,
   TrameSizeObserver,
+  TrameXaiHeatMap,
 };

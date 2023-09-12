@@ -389,6 +389,9 @@ class XaiHeatMap(HtmlElement):
 
     :param hover: event triggered when moving over the map
     :param enter: event triggered when entring the map area
+    :param exit: event triggered when exiting the map area
+    :param color_range_change: event triggered when color range used has changed
+    :param full_range_change: event triggered when full range has changed
     """
 
     def __init__(self, children=None, **kwargs):
@@ -403,8 +406,9 @@ class XaiHeatMap(HtmlElement):
         self._event_names += [
             "hover",
             "enter",
-            ("color_range", "colorRange"),
-            ("full_range", "fullRange"),
+            "exit",
+            ("color_range_change", "colorRange"),
+            ("full_range_change", "fullRange"),
         ]
 
 
