@@ -2,6 +2,12 @@
 
 <!--next-version-placeholder-->
 
+## v2.2.0 (2023-09-13)
+
+### Feature
+
+* **vue23:** Add support for vue3 ([`be61ad2`](https://github.com/Kitware/trame-components/commit/be61ad2d05dea25c6a7e83552a3835ae935a3453))
+
 ## v2.1.1 (2023-02-23)
 ### Fix
 * **version:** Add __version__ ([`d7ca147`](https://github.com/Kitware/trame-components/commit/d7ca147820b88c87fe3c1cbb931c23858e5c8bc2))
