@@ -1,14 +1,14 @@
-import TrameClientStateChange from './ClientStateChange';
-import TrameClientTriggers from './ClientTriggers';
-import TrameCursor from './Cursor';
-import TrameFloatCard from './FloatCard';
-import TrameGitTree from './GitTree';
-import TrameLifeCycleMonitor from './LifeCycleMonitor';
-import TrameListBrowser from './ListBrowser';
-import TrameMouseTrap from './MouseTrap';
-import TrameSizeObserver from './SizeObserver';
-import TrameXaiHeatMap from './XaiHeatMap';
-import TrameXaiImage from './XaiImage';
+import TrameClientStateChange from "./TrameClientStateChange";
+import TrameClientTriggers from "./TrameClientTriggers";
+import TrameCursor from "./TrameCursor";
+import TrameFloatCard from "./TrameFloatCard";
+import TrameGitTree from "./TrameGitTree";
+import TrameLifeCycleMonitor from "./TrameLifeCycleMonitor";
+import TrameListBrowser from "./TrameListBrowser";
+import TrameMouseTrap from "./TrameMouseTrap";
+import TrameSizeObserver from "./TrameSizeObserver";
+import TrameXaiHeatMap from "./TrameXaiHeatMap";
+import TrameXaiImage from "./TrameXaiImage";
 
 export default {
   TrameClientStateChange,

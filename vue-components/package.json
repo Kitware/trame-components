@@ -1,35 +1,48 @@
 {
-    "name": "trame-components",
-    "version": "2.0.0",
-    "description": "Trame widgets",
-    "private": true,
-    "scripts": {
-        "serve": "vue-cli-service serve",
-        "build": "vue-cli-service build --target lib --name trame_components --filename trame-components src/use.js",
-        "lint": "vue-cli-service lint"
-    },
-    "dependencies": {
-        "@kitware/vtk.js": "24.8.0",
-        "core-js": "^3.20.3",
-        "mousetrap": "^1.6.5",
-        "vue": "^2.6.14"
-    },
-    "devDependencies": {
-        "@babel/core": "^7.12.16",
-        "@babel/eslint-parser": "^7.12.16",
-        "@vue/cli-plugin-babel": "~5.0.4",
-        "@vue/cli-plugin-eslint": "~5.0.0",
-        "@vue/cli-service": "~5.0.4",
-        "eslint": "^7.32.0",
-        "eslint-config-prettier": "^8.3.0",
-        "eslint-plugin-prettier": "^4.0.0",
-        "eslint-plugin-vue": "^8.0.3",
-        "prettier": "^2.4.1",
-        "vue-template-compiler": "^2.6.14"
-    },
-    "keywords": [
-        "Kitware",
-        "trame"
-    ],
-    "license": "Apache-2.0"
+  "name": "trame-components",
+  "version": "0.0.0",
+  "description": "Vue component for trame",
+  "repository": "Kitware/trame-components",
+  "main": "./dist/trame-components.umd.js",
+  "unpkg": "./dist/trame-components.umd.js",
+  "exports": {
+    ".": {
+      "require": "./dist/trame-components.umd.js"
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build --emptyOutDir",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore --ignore-pattern public",
+    "semantic-release": "semantic-release"
+  },
+  "dependencies": {
+    "@kitware/vtk.js": "24.8.0",
+    "mousetrap": "^1.6.5"
+  },
+  "peerDependencies": {
+    "vue": "^2.7.0 || >=3.0.0"
+  },
+  "devDependencies": {
+    "@rushstack/eslint-patch": "^1.1.4",
+    "@vue/eslint-config-prettier": "^7.0.0",
+    "eslint": "^8.33.0",
+    "eslint-plugin-vue": "^9.3.0",
+    "prettier": "^2.7.1",
+    "semantic-release": "19.0.2",
+    "vite": "^4.1.0",
+    "vue": "^3.0.0"
+  },
+  "author": "Kitware Inc",
+  "license": "MIT",
+  "keywords": [
+    "Kitware",
+    "trame"
+  ],
+  "files": [
+    "dist/*",
+    "src/*",
+    "*.json",
+    "*.js"
+  ]
 }
