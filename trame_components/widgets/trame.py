@@ -441,8 +441,12 @@ class XaiImage(HtmlElement):
 
     Events:
 
+    :param area_selection_change: event triggered when requested area selection change
     :param hover: event triggered when moving over the map
     :param enter: event triggered when entring the map area
+    :param exit: event triggered when exiting the map area
+    :param color_range_change: event triggered when color range used has changed
+    :param full_range_change: event triggered when full range has changed
     """
 
     def __init__(self, children=None, **kwargs):
@@ -468,8 +472,9 @@ class XaiImage(HtmlElement):
         ]
         self._event_names += [
             ("area_selection_change", "areaSelectionChange"),
-            ("color_range", "colorRange"),
-            ("full_range", "fullRange"),
             "hover",
             "enter",
+            "exit",
+            ("color_range_change", "colorRange"),
+            ("full_range_change", "fullRange"),
         ]
