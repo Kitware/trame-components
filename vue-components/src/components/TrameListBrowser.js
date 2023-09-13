@@ -1,4 +1,57 @@
-const { ref, computed } = window.Vue;
+const { ref, computed, version } = window.Vue;
+
+const ICON_ATTR = version[0] === "2" ? "v-text" : ":icon";
+const LIST_ITEM =
+  version[0] === "2"
+    ? `
+  <v-list-item-icon v-if="item.prependIcon">
+      <v-icon v-text="item.prependIcon"/>
+  </v-list-item-icon>
+  <v-list-item-content>
+      <v-list-item-title v-text="item.text" />
+  </v-list-item-content>
+  <v-list-item-icon v-if="item.appendIcon">
+      <v-icon v-text="item.appendIcon"/>
+  </v-list-item-icon>
+`
+    : `
+  <template v-slot:prepend v-if="item.prependIcon">
+    <v-icon :icon="item.prependIcon"></v-icon>
+  </template>
+  <v-list-item-title v-text="item.text"></v-list-item-title>
+  <template v-slot:append v-if="item.appendIcon">
+    <v-icon :icon="item.appendIcon"></v-icon>
+  </template>
+`;
+const QUERY =
+  version[0] === "2"
+    ? `<v-text-field
+        name="filter-algo"
+        v-model="filterText"
+        label="Filter"
+        clearable
+        class="mx-3"
+        :prepend-inner-icon="filterIcon"
+        dense
+        filled
+        rounded
+        single-line
+        hide-details
+        outlined
+      />`
+    : `<v-text-field
+          name="filter-algo"
+          v-model="filterText"
+          label="Filter"
+          clearable
+          class="mx-3"
+          :prepend-inner-icon="filterIcon"
+          dense="compact"
+          filled
+          single-line
+          variant="outlined"
+          hide-details
+      />`;
 
 export default {
   props: {
@@ -36,6 +89,9 @@ export default {
     const filterValues = computed(() => {
       if (props.filterQuery) {
         return props.filterQuery.toLowerCase().split(" ");
+      }
+      if (!filterText.value) {
+        return [];
       }
       return filterText.value.toLowerCase().split(" ");
     });
@@ -92,12 +148,12 @@ export default {
   template: `
     <v-col class="pa-0">
         <v-divider v-if="path" class="mb-3" />
-        <v-row v-if="path" class="mx-2 py-2 rounded-0">
+        <v-row v-if="path" class="mx-2 py-2 rounded-0 align-center">
             <div v-for="item, idx in path" :key="idx" class="d-flex">
                 <span v-if="idx">></span>
                 <v-icon
                     class="mx-1"
-                    v-text="activeFolderIndex === idx ? pathSelectedIcon : pathIcon"
+                    ${ICON_ATTR}="activeFolderIndex === idx ? pathSelectedIcon : pathIcon"
                     @click="goToPath(idx)"
                     @mouseenter="activatePath(idx)"
                     @mouseleave="deactivatePath"
@@ -107,20 +163,7 @@ export default {
         </v-row>
         <v-divider v-if="path" class="mt-3" />
         <v-row v-if="filter" class="px-2 py-0 ma-0" :class="{ 'mt-3': path }">
-            <v-text-field
-                name="filter-algo"
-                v-model="filterText"
-                label="Filter"
-                clearable
-                class="mx-3"
-                :prepend-inner-icon="filterIcon"
-                dense
-                filled
-                rounded
-                single-line
-                hide-details
-                outlined
-            />
+            ${QUERY}
         </v-row>
         <v-list dense v-if="list" class="overflow-y-auto" fill-height>
             <v-list-item
@@ -129,15 +172,7 @@ export default {
                 @click="selectItem(i)"
                 v-show="show(item)"
             >
-                <v-list-item-icon v-if="item.prependIcon">
-                    <v-icon v-text="item.prependIcon"/>
-                </v-list-item-icon>
-                <v-list-item-content>
-                    <v-list-item-title v-text="item.text" />
-                </v-list-item-content>
-                <v-list-item-icon v-if="item.appendIcon">
-                    <v-icon v-text="item.appendIcon"/>
-                </v-list-item-icon>
+              ${LIST_ITEM}
             </v-list-item>
         </v-list>
     </v-col>
