@@ -1,5 +1,8 @@
 version: '3'
 
+env:
+  TRAME_DISABLE_V3_WARNING: 1
+
 tasks:
   venv:
     cmds:
