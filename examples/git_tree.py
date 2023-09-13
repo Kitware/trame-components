@@ -3,6 +3,10 @@ from trame.app import get_server
 from trame.ui.html import DivLayout
 from trame.widgets import trame, html
 
+server = get_server()
+server.client_type = os.environ.get("VUE_VERSION", "vue2")
+print(f"Using {server.client_type}")
+
 selection = ["2"]
 tree = [
     {"id": "1", "parent": "0", "visible": 0, "name": "Wavelet"},
@@ -10,10 +14,6 @@ tree = [
     {"id": "3", "parent": "1", "visible": 1, "name": "Slice"},
     {"id": "4", "parent": "2", "visible": 1, "name": "Slice 2"},
 ]
-server = get_server()
-server.client_type = os.environ.get("VUE_VERSION", "vue2")
-
-print(f"Using {server.client_type}")
 
 
 def on_visibility_change(event):

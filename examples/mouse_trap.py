@@ -10,6 +10,7 @@ from trame.widgets import trame, html
 server = get_server()
 state = server.state
 server.client_type = os.environ.get("VUE_VERSION", "vue2")
+print(f"Using {server.client_type}")
 
 state.last_action = ""
 state.action_count = 1

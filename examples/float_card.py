@@ -4,6 +4,7 @@ from trame.widgets import trame
 
 server = get_server()
 server.client_type = os.environ.get("VUE_VERSION", "vue2")
+print(f"Using {server.client_type}")
 
 if server.client_type == "vue2":
     from trame.ui.vuetify2 import SinglePageLayout

@@ -6,7 +6,6 @@ from trame.widgets import trame, html
 
 server = get_server()
 server.client_type = os.environ.get("VUE_VERSION", "vue2")
-
 print(f"Using {server.client_type}")
 
 state = server.state

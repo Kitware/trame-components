@@ -6,10 +6,9 @@ from trame.widgets import trame, html
 
 server = get_server()
 server.client_type = os.environ.get("VUE_VERSION", "vue2")
-state = server.state
-
 print(f"Using {server.client_type}")
 
+state = server.state
 state.full_range = [0, 1]
 state.current_range = [0, 1]
 state.hover = None
