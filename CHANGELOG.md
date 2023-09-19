@@ -2,6 +2,12 @@
 
 <!--next-version-placeholder-->
 
+## v2.2.1 (2023-09-19)
+
+### Fix
+
+* **XaiImage:** Use props.src properly ([`d563ae5`](https://github.com/Kitware/trame-components/commit/d563ae5b66c8389fcdb29059a8528e2314728c1c))
+
 ## v2.2.0 (2023-09-13)
 
 ### Feature
