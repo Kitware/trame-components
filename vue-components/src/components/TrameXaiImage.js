@@ -1,6 +1,7 @@
 import XaiHeatMap from "./TrameXaiHeatMap";
 
-const { ref, toRefs, reactive, computed, onBeforeUnmount, watch } = window.Vue;
+const { ref, toRefs, reactive, computed, onBeforeUnmount, watch, watchEffect } =
+  window.Vue;
 
 export default {
   components: {
@@ -119,7 +120,6 @@ export default {
     // Methods ----------------------------------------------------------------
 
     function updateSizes() {
-      console.log("updateSizes");
       imageStyle.height = "auto";
       imageStyle.width = "auto";
       const annotationStyleTmp = { ...annotationStyle.value };
@@ -186,28 +186,22 @@ export default {
       imageHeight.value = this.height;
     }
 
-    // Watch ------------------------------------------------------------------
-    watch(
-      () => props.url,
-      (url) => (image.src = url)
-    );
-    watch(() => props.maxWidth, updateSizes);
-    watch(() => props.maxHeight, updateSizes);
-
     // Created ----------------------------------------------------------------
 
     image.addEventListener("load", updateImageSize);
-    image.src = props.src;
-
     onBeforeUnmount(() => {
       image.removeEventListener("load", updateImageSize);
     });
 
-    updateSizes();
+    // Watch ------------------------------------------------------------------
+    watchEffect(() => (image.src = props.src));
+    watch(() => props.maxWidth, updateSizes);
+    watch(() => props.maxHeight, updateSizes);
 
     // Public API -------------------------------------------------------------
 
     expose({ updateAreaSelection });
+    updateSizes();
 
     return {
       // props
