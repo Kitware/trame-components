@@ -10,6 +10,8 @@ import TrameSizeObserver from "./TrameSizeObserver";
 import TrameXaiHeatMap from "./TrameXaiHeatMap";
 import TrameXaiImage from "./TrameXaiImage";
 
+import TrameLineSeed from "./TrameLineSeed";
+
 export default {
   TrameClientStateChange,
   TrameClientTriggers,
@@ -22,4 +24,6 @@ export default {
   TrameSizeObserver,
   TrameXaiHeatMap,
   TrameXaiImage,
+
+  TrameLineSeed,
 };

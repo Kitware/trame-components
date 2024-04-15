@@ -13,6 +13,7 @@ __all__ = [
     "GitTree",
     "XaiHeatMap",
     "XaiImage",
+    "LineSeed",
 ]
 
 
@@ -477,4 +478,24 @@ class XaiImage(HtmlElement):
             "exit",
             ("color_range_change", "colorRange"),
             ("full_range_change", "fullRange"),
+        ]
+
+
+# -----------------------------------------------------------------------------
+# TrameLineSeed
+# -----------------------------------------------------------------------------
+
+
+class LineSeed(HtmlElement):
+    def __init__(self, children=None, **kwargs):
+        super().__init__("trame-line-seed", children, **kwargs)
+        self._attr_names += [
+            ("point_1", "point1"),
+            ("point_2", "point2"),
+            ("number_steps", "numberOfSteps"),
+            "bounds",
+            "image",
+        ]
+        self._event_names += [
+            ("update_seed", "update-seed"),
         ]
