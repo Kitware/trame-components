@@ -2,6 +2,12 @@
 
 <!--next-version-placeholder-->
 
+## v2.3.0 (2024-04-16)
+
+### Feature
+
+* **LineSeed:** Add line seed widget ([`0262b7f`](https://github.com/Kitware/trame-components/commit/0262b7fe6ab9ed4d0372f26582de4204290e4d42))
+
 ## v2.2.1 (2023-09-19)
 
 ### Fix
