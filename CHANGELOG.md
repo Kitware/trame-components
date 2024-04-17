@@ -2,6 +2,12 @@
 
 <!--next-version-placeholder-->
 
+## v2.3.1 (2024-04-17)
+
+### Fix
+
+* **SizeObserver:** Now works with new wslink ([`4359f1c`](https://github.com/Kitware/trame-components/commit/4359f1c31ff8c0bb43c24dc8bfc2299cd73e6bd2))
+
 ## v2.3.0 (2024-04-16)
 
 ### Feature
