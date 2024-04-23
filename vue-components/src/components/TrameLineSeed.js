@@ -28,6 +28,10 @@ export default {
     image: {
       default: null,
     },
+    nbSliders: {
+      type: Number,
+      default: 0,
+    },
   },
   emit: ["update-seed"],
   setup(props, { emit }) {
@@ -48,11 +52,9 @@ export default {
     const x2 = ref(props.point2[0]);
     const y2 = ref(props.point2[1]);
     const z2 = ref(props.point2[2]);
-    const sharedDepth = ref(true);
-    const nbSeeds = ref(50);
 
     const pointColor2 = computed(() =>
-      unref(sharedDepth) ? "#2196F3" : "#4CAF50"
+      unref(props.nbSliders) == 2 ? "#4CAF50" : "#2196F3"
     );
     const step = computed(
       () => (props.bounds[5] - props.bounds[4]) / props.numberOfSteps
@@ -76,7 +78,7 @@ export default {
       if (!unref(userInput)) {
         return;
       }
-      const xSelected = unref(sharedDepth) ? x1 : x2;
+      const xSelected = props.nbSliders == 1 ? x1 : x2;
       emit("update-seed", {
         p1: [unref(x1), unref(y1), unref(z1)],
         p2: [unref(xSelected), unref(y2), unref(z2)],
@@ -184,7 +186,7 @@ export default {
         update2DPoints();
       }
     );
-    watch(sharedDepth, pushLineSeed);
+    watch(() => props.nbSliders, pushLineSeed);
 
     update2DPoints();
     const { image } = toRefs(props);
@@ -197,8 +199,6 @@ export default {
       radius,
       p1,
       p2,
-      nbSeeds,
-      sharedDepth,
       x1,
       x2,
       step,
@@ -252,32 +252,9 @@ export default {
     />
   </svg>
   <v-col class="pt-0">
-    <v-row class="align-center">
-      <v-col cols="12" md="11">
-      <v-text-field
-        density="compact"
-        hide-details
-        type="number"
-        min="5"
-        max="1000"
-        step="1"
-        label="Seeds count"
-        v-model="nbSeeds"
-      />
-      </v-col>
-      <v-col cols="12" md="1">
-      <v-switch
-        style="width: 80px" 
-        class="mt-0"
-        density="compact"
-        v-model="sharedDepth"
-        hide-details
-      />
-      </v-col>
-    </v-row>
     <v-row>
         <v-slider 
-            v-show="!sharedDepth" 
+            v-show="nbSliders > 1"
             v-model="x2" 
             track-color="green" 
             color="green" 
@@ -291,6 +268,7 @@ export default {
     </v-row>
     <v-row>
         <v-slider 
+            v-show="nbSliders > 0"
             v-model="x1" 
             track-color="blue" 
             color="blue" 

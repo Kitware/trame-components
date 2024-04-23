@@ -492,7 +492,8 @@ class LineSeed(HtmlElement):
         self._attr_names += [
             ("point_1", "point1"),
             ("point_2", "point2"),
-            ("number_steps", "numberOfSteps"),
+            ("n_steps", "numberOfSteps"),
+            ("n_sliders", "nbSliders"),
             "bounds",
             "image",
         ]
