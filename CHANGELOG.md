@@ -2,6 +2,12 @@
 
 <!--next-version-placeholder-->
 
+## v2.3.2 (2024-04-23)
+
+### Fix
+
+* **LineSeed:** Improve api to make it more generic ([`c8d9e23`](https://github.com/Kitware/trame-components/commit/c8d9e235c77bc79f53c6d5b4031d1c6a6a185822))
+
 ## v2.3.1 (2024-04-17)
 
 ### Fix
