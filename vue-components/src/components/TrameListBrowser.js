@@ -63,6 +63,10 @@ export default {
       type: String,
       default: "mdi-folder",
     },
+    pathSlashStyle: {
+      type: String,
+      default: ">",
+    },
     filterIcon: {
       type: String,
       default: "mdi-magnify",
@@ -150,7 +154,7 @@ export default {
         <v-divider v-if="path" class="mb-3" />
         <v-row v-if="path" class="mx-2 py-2 rounded-0 align-center">
             <div v-for="item, idx in path" :key="idx" class="d-flex">
-                <span v-if="idx">></span>
+                <span v-if="idx">{{pathSlashStyle}}</span>
                 <v-icon
                     class="mx-1"
                     ${ICON_ATTR}="activeFolderIndex === idx ? pathSelectedIcon : pathIcon"
