@@ -294,6 +294,7 @@ class ListBrowser(HtmlElement):
             "filter",
             "path",
             "list",
+            "path_slash_style",
             ("query", "filterQuery"),
         ]
 
