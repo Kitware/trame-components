@@ -279,6 +279,7 @@ class ListBrowser(HtmlElement):
 
     :param list: List stored in state
     :param filter: Function to filter list
+    :param path_slash_icon: The icon to use for the slash between folders
     :param path_icon:
     :param path_selected_icon:
     :param filter_icon:
@@ -290,11 +291,11 @@ class ListBrowser(HtmlElement):
         self._attr_names += [
             "path_icon",
             "path_selected_icon",
+            "path_slash_style",
             "filter_icon",
             "filter",
             "path",
             "list",
-            "path_slash_style",
             ("query", "filterQuery"),
         ]
 
