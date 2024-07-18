@@ -164,20 +164,20 @@ export default {
         <v-row v-if="path" class="mx-2 py-2 rounded-0 align-center">
             <div v-for="item, idx in path" :key="idx" class="d-flex" >
                 <span v-if="idx">&nbsp; {{ pathSeparator }} &nbsp;</span>
-                <v-icon
-                    v-if="showIcon"
-                    class="mx-1"
-                    ${ICON_ATTR}="activeFolderIndex === idx ? pathSelectedIcon : pathIcon"
-                    @click="goToPath(idx)"
-                    @mouseenter="activatePath(idx)"
-                    @mouseleave="deactivatePath"
-                />
-                <span v-if="showPathWithIcon"
+                <div
                     @click="goToPath(idx)"
                     @mouseenter="activatePath(idx)"
                     @mouseleave="deactivatePath">
-                    {{path[idx]}}
-                </span>
+                    <v-icon
+                        v-if="showIcon"
+                        class="mx-1"
+                        ${ICON_ATTR}="activeFolderIndex === idx ? pathSelectedIcon : pathIcon"
+                    />
+                    <span v-if="showPathWithIcon"
+                        :style="{ textDecoration: activeFolderIndex === idx ? 'underline' : 'none'}">
+                        {{path[idx]}}
+                    </span>
+                </div>
             </div>
             <div v-if="!showPathWithIcon"class="text-truncate text-body-2 pl-1">{{ activeFolderName }}</div>
         </v-row>
