@@ -1,4 +1,5 @@
 from trame_client.widgets.core import AbstractElement
+
 from trame_components import module
 
 __all__ = [
@@ -279,7 +280,10 @@ class ListBrowser(HtmlElement):
 
     :param list: List stored in state
     :param filter: Function to filter list
-    :param path_slash_icon: The icon to use for the slash between folders
+    :param path_separator: The icon to use for the slash between folders
+    :param show_path_with_icon: Show the path next to the icon?
+    :param show_icon: Show the folder icon?
+    :param path_as_icon: Use the foldername itself as the icon?
     :param path_icon:
     :param path_selected_icon:
     :param filter_icon:
@@ -291,7 +295,9 @@ class ListBrowser(HtmlElement):
         self._attr_names += [
             "path_icon",
             "path_selected_icon",
-            "path_slash_style",
+            "path_separator",
+            "show_icon",
+            "show_path_with_icon",
             "filter_icon",
             "filter",
             "path",

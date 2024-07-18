@@ -1,5 +1,7 @@
 import os
+
 from trame.app import get_server
+
 from trame.widgets import trame
 
 server = get_server()
@@ -50,6 +52,8 @@ with SinglePageLayout(server) as layout:
             list=("listing", FILE_LISTING),
             path=("path", PATH_HIERARCHY),
             click=(on_click, "[$event]"),
+            path_separator="/",
+            show_path_with_icon=True,
         )
 
 if __name__ == "__main__":
