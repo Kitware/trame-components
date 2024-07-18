@@ -55,15 +55,24 @@ const QUERY =
 
 export default {
   props: {
+    showPathWithIcon: {
+      type: Boolean,
+      default: false
+    },
     pathIcon: {
       type: String,
       default: "mdi-folder-outline",
     },
+    showIcon: {
+      type: Boolean,
+      default: true
+    },
+    // showIcon, showPathWithIcon, separ
     pathSelectedIcon: {
       type: String,
       default: "mdi-folder",
     },
-    pathSlashStyle: {
+    pathSeparator: {
       type: String,
       default: ">",
     },
@@ -153,17 +162,24 @@ export default {
     <v-col class="pa-0">
         <v-divider v-if="path" class="mb-3" />
         <v-row v-if="path" class="mx-2 py-2 rounded-0 align-center">
-            <div v-for="item, idx in path" :key="idx" class="d-flex">
-                <span v-if="idx">{{pathSlashStyle}}</span>
+            <div v-for="item, idx in path" :key="idx" class="d-flex" >
+                <span v-if="idx">&nbsp; {{ pathSeparator }} &nbsp;</span>
                 <v-icon
+                    v-if="showIcon"
                     class="mx-1"
                     ${ICON_ATTR}="activeFolderIndex === idx ? pathSelectedIcon : pathIcon"
                     @click="goToPath(idx)"
                     @mouseenter="activatePath(idx)"
                     @mouseleave="deactivatePath"
                 />
+                <span v-if="showPathWithIcon"
+                    @click="goToPath(idx)"
+                    @mouseenter="activatePath(idx)"
+                    @mouseleave="deactivatePath">
+                    {{path[idx]}}
+                </span>
             </div>
-            <div class="text-truncate text-body-2 pl-1">{{ activeFolderName }}</div>
+            <div v-if="!showPathWithIcon"class="text-truncate text-body-2 pl-1">{{ activeFolderName }}</div>
         </v-row>
         <v-divider v-if="path" class="mt-3" />
         <v-row v-if="filter" class="px-2 py-0 ma-0" :class="{ 'mt-3': path }">
