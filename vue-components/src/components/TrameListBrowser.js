@@ -67,7 +67,6 @@ export default {
       type: Boolean,
       default: true
     },
-    // showIcon, showPathWithIcon, separ
     pathSelectedIcon: {
       type: String,
       default: "mdi-folder",
@@ -95,19 +94,13 @@ export default {
     },
     stickyHeader: {
       type: Boolean,
-      default: true,
+      default: false,
     },
   },
   emits: ["click"],
   setup(props, { emit }) {
     const filterText = ref("");
     const activeFolderIndex = ref(-1);
-    const stickyHeaderStyle = ref({
-      position: "sticky",
-      width: "100%",
-      zIndex: 999,
-    });
-
     const filterValues = computed(() => {
       if (props.filterQuery) {
         return props.filterQuery.toLowerCase().split(" ");
@@ -164,49 +157,48 @@ export default {
       activeFolderIndex,
       filterValues,
       activeFolderName,
-      stickyHeaderStyle,
       ...methods,
     };
   },
 
   template: `
-      <v-col style="padding: 0 !important; height: 100%; display: flex; flex-direction: column;">
-        <v-sheet :style=" stickyHeader ? stickyHeaderStyle : {}">
+      <v-col style="padding: 0 !important; height: 100%; display: flex; flex-direction: column;" :style="{ overflow: stickyHeader ? 'none' : 'auto'}">
+        <v-sheet>
           <v-divider v-if="path" class="mb-3" />
           <v-row v-if="path" class="mx-2 py-2 rounded-0 align-center">
-              <div v-for="item, idx in path" :key="idx" class="d-flex" >
-                  <span v-if="idx">&nbsp; {{ pathSeparator }} &nbsp;</span>
-                  <div
-                      @click="goToPath(idx)"
-                      @mouseenter="activatePath(idx)"
-                      @mouseleave="deactivatePath">
-                      <v-icon
-                          v-if="showIcon"
-                          class="mx-1"
-                          ${ICON_ATTR}="activeFolderIndex === idx ? pathSelectedIcon : pathIcon"
-                      />
-                      <span v-if="showPathWithIcon"
-                          :style="{ textDecoration: activeFolderIndex === idx ? 'underline' : 'none'}">
-                          {{path[idx]}}
-                      </span>
-                  </div>
+            <div v-for="item, idx in path" :key="idx" class="d-flex">
+              <span v-if="idx">&nbsp;{{ pathSeparator }}&nbsp;</span>
+              <div
+                @click="goToPath(idx)"
+                @mouseenter="activatePath(idx)"
+                @mouseleave="deactivatePath">
+                <v-icon
+                  v-if="showIcon"
+                  class="mx-1"
+                  ${ICON_ATTR}="activeFolderIndex === idx ? pathSelectedIcon : pathIcon"
+                />
+                <span v-if="showPathWithIcon"
+                  :style="{ textDecoration: activeFolderIndex === idx ? 'underline' : 'none'}">
+                  {{path[idx]}}
+                </span>
               </div>
-              <div v-if="!showPathWithIcon"class="text-truncate text-body-2 pl-1">{{ activeFolderName }}</div>
+            </div>
+            <div v-if="!showPathWithIcon"class="text-truncate text-body-2 pl-1">{{ activeFolderName }}</div>
           </v-row>
           <v-divider v-if="path" class="mt-3" />
           <v-row v-if="filter" class="px-2 py-0 ma-0" :class="{ 'mt-3': path }">
-              ${QUERY}
+            ${QUERY}
           </v-row>
         </v-sheet>
-        <v-list dense v-if="list" class="overflow-y-auto" fill-height>
-            <v-list-item
-                v-for="(item, i) in list"
-                :key="i"
-                @click="selectItem(i)"
-                v-show="show(item)"
-            >
-              ${LIST_ITEM}
-            </v-list-item>
+        <v-list dense v-if="list" fill-height :style="{ overflow: stickyHeader ? 'auto' : 'initial'}">
+          <v-list-item
+            v-for="(item, i) in list"
+              :key="i"
+              @click="selectItem(i)"
+              v-show="show(item)"
+          >
+            ${LIST_ITEM}
+          </v-list-item>
         </v-list>
       </v-col>
     `,
