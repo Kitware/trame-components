@@ -5,12 +5,14 @@ from trame.app import get_server
 from trame.widgets import trame
 
 server = get_server()
-server.client_type = os.environ.get("VUE_VERSION", "vue2")
+server.client_type = os.environ.get("VUE_VERSION", "vue3")
 
 if server.client_type == "vue2":
     from trame.ui.vuetify2 import SinglePageLayout
 else:
     from trame.ui.vuetify3 import SinglePageLayout
+
+from trame.widgets import vuetify3 as v3
 
 FILE_LISTING = [
     {
@@ -34,6 +36,18 @@ FILE_LISTING = [
     },
 ]
 
+FILLER_DATA = [
+    {
+        "text": f"File_{i}.txt",
+        "value": f"file_{i}.txt",
+        "type": "File",
+        "prependIcon": "mdi-file-document-outline",
+    }
+    for i in range(40)
+]
+
+FILE_LISTING = FILE_LISTING + FILLER_DATA
+
 PATH_HIERARCHY = ["Home", "parent", "child"]
 
 
@@ -44,17 +58,23 @@ def on_click(e):
 with SinglePageLayout(server) as layout:
     layout.title.set_text("List Browser")
     with layout.content:
-        trame.ListBrowser(
-            classes="pa-8",
-            location=("[100, 100]",),
-            handle_position="bottom",
-            filter=True,
-            list=("listing", FILE_LISTING),
-            path=("path", PATH_HIERARCHY),
-            click=(on_click, "[$event]"),
-            path_separator="/",
-            show_path_with_icon=True,
-        )
+        with v3.VContainer(
+            style=(
+                "height:50%;width:50%;margin-left: auto;margin-right: auto; margin-top: 50px;"
+                " border: 1px solid red;"
+            )
+        ):
+            trame.ListBrowser(
+                classes="pa-8",
+                location=("[100, 100]",),
+                handle_position="bottom",
+                filter=True,
+                list=("listing", FILE_LISTING),
+                path=("path", PATH_HIERARCHY),
+                click=(on_click, "[$event]"),
+                path_separator="/",
+                show_path_with_icon=True,
+            )
 
 if __name__ == "__main__":
     server.start()
