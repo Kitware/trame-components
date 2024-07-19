@@ -58,9 +58,10 @@ def on_click(e):
 with SinglePageLayout(server) as layout:
     layout.title.set_text("List Browser")
     with layout.content:
+        # Dummy container to give you an idea of how it'd look in a floating card
         with v3.VContainer(
             style=(
-                "height:50%;width:50%;margin-left: auto;margin-right: auto; margin-top: 50px;"
+                "height:700px; width:50%; margin-left: auto; margin-right: auto; margin-top: 50px;"
                 " border: 1px solid red;"
             )
         ):
