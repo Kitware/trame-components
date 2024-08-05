@@ -2,6 +2,17 @@
 
 <!--next-version-placeholder-->
 
+## v2.4.0 (2024-08-05)
+
+### Feature
+
+* **ListBrowser:** Add option to toggle path icon and path text ([`4f2abc3`](https://github.com/Kitware/trame-components/commit/4f2abc3219c7869527dba1941aa5aa652114cc50))
+* **ListBrowser:** Add pathSlashStyle prop ([`0f6b2a3`](https://github.com/Kitware/trame-components/commit/0f6b2a377e3187761f3d90c51b111e7daa660cc8))
+
+### Documentation
+
+* **ListBrowser:** Update docstring for new parameter ([`d387185`](https://github.com/Kitware/trame-components/commit/d38718540d971ec6db0220dc3456396d11d215d4))
+
 ## v2.3.2 (2024-04-23)
 
 ### Fix
