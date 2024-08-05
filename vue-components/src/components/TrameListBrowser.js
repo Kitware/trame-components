@@ -57,15 +57,15 @@ export default {
   props: {
     showPathWithIcon: {
       type: Boolean,
-      default: false
+      default: false,
     },
     pathIcon: {
       type: String,
       default: "mdi-folder-outline",
     },
-    showIcon: {
+    hideIcon: {
       type: Boolean,
-      default: true
+      default: false,
     },
     pathSelectedIcon: {
       type: String,
@@ -121,7 +121,7 @@ export default {
           return true;
         }
         const txt = [item.text.toLowerCase(), item.type.toLowerCase()].join(
-          "  "
+          "  ",
         );
         const tokens = filterValues.value;
         for (let i = 0; i < tokens.length; i++) {
@@ -173,7 +173,7 @@ export default {
                 @mouseenter="activatePath(idx)"
                 @mouseleave="deactivatePath">
                 <v-icon
-                  v-if="showIcon"
+                  v-if="!hideIcon"
                   class="mx-1"
                   ${ICON_ATTR}="activeFolderIndex === idx ? pathSelectedIcon : pathIcon"
                 />

@@ -282,7 +282,7 @@ class ListBrowser(HtmlElement):
     :param filter: Function to filter list
     :param path_separator: The icon to use for the slash between folders
     :param show_path_with_icon: Shows the path with the icon
-    :param show_icon: Show the folder icon in the navigation bar
+    :param hide_icon: Hide the folder icons in the navigation bar
     :param sticky_header: Freezes the navigation bar while scrolling
     :param path_icon:
     :param path_selected_icon:
@@ -296,7 +296,7 @@ class ListBrowser(HtmlElement):
             "path_icon",
             "path_selected_icon",
             "path_separator",
-            "show_icon",
+            "hide_icon",
             "show_path_with_icon",
             "filter_icon",
             "sticky_header",
