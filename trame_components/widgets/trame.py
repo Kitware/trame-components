@@ -189,11 +189,12 @@ class SizeObserver(HtmlElement):
     """
 
     def __init__(self, _name, **kwargs):
-        super().__init__("trame-size-observer", name=_name, **kwargs)
+        super().__init__("trame-size-observer", **kwargs)
         self._attr_names += [
             "name",
         ]
         self.server.state[_name] = None
+        self.name = self.server.translator.translate_key(_name)
 
 
 # -----------------------------------------------------------------------------
