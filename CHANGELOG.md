@@ -2,6 +2,12 @@
 
 <!--next-version-placeholder-->
 
+## v2.4.1 (2024-09-24)
+
+### Fix
+
+* **child-server:** Update SizeObserver to handle translation ([`1b7095c`](https://github.com/Kitware/trame-components/commit/1b7095ccae5dc7ff7a34347c75773fe09c5f12fa))
+
 ## v2.4.0 (2024-08-05)
 
 ### Feature
