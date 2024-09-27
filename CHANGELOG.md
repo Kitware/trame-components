@@ -2,6 +2,12 @@
 
 <!--next-version-placeholder-->
 
+## v2.4.2 (2024-09-27)
+
+### Fix
+
+* **listbrowser:** Cursor changes ([#3](https://github.com/Kitware/trame-components/issues/3)) ([`94bb54f`](https://github.com/Kitware/trame-components/commit/94bb54fcf2cb100e1fada2b633264a1d5f97fe4c))
+
 ## v2.4.1 (2024-09-24)
 
 ### Fix
