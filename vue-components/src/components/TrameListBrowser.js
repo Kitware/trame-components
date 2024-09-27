@@ -167,7 +167,7 @@ export default {
           <v-divider v-if="path" class="mb-3" />
           <v-row v-if="path" class="mx-2 py-2 rounded-0 align-center">
             <div v-for="item, idx in path" :key="idx" class="d-flex">
-              <span v-if="idx">&nbsp;{{ pathSeparator }}&nbsp;</span>
+              <span v-if="idx" style="cursor: default">&nbsp;{{ pathSeparator }}&nbsp;</span>
               <div
                 @click="goToPath(idx)"
                 @mouseenter="activatePath(idx)"
@@ -175,9 +175,11 @@ export default {
                 <v-icon
                   v-if="!hideIcon"
                   class="mx-1"
+                  style="cursor: pointer"
                   ${ICON_ATTR}="activeFolderIndex === idx ? pathSelectedIcon : pathIcon"
                 />
                 <span v-if="showPathWithIcon"
+                  style="cursor: pointer"
                   :style="{ textDecoration: activeFolderIndex === idx ? 'underline' : 'none'}">
                   {{path[idx]}}
                 </span>
