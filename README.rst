@@ -1,4 +1,6 @@
-trame-components: trame vue.js widgets
+.. |pypi_download| image:: https://img.shields.io/pypi/dm/trame-components
+
+trame-components: vue.js utility widgets |pypi_download|
 ===========================================================================
 
 .. image:: https://github.com/Kitware/trame-components/actions/workflows/test_and_release.yml/badge.svg
