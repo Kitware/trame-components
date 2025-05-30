@@ -2,6 +2,17 @@
 
 <!--next-version-placeholder-->
 
+## v2.5.0 (2025-05-30)
+
+### Feature
+
+* **ClientTriggers:** Now emit exit event ([`f27e25f`](https://github.com/Kitware/trame-components/commit/f27e25f10be99be466befec4cd48d4235bbf9f0e))
+
+### Documentation
+
+* **js:** List JS dependency ([`5f17f19`](https://github.com/Kitware/trame-components/commit/5f17f19aed6cc13902170c4cc9e788460d6b6b59))
+* Update README.rst ([`5a936b0`](https://github.com/Kitware/trame-components/commit/5a936b0a5e177c254624e56492587fcac0121a40))
+
 ## v2.4.2 (2024-09-27)
 
 ### Fix
