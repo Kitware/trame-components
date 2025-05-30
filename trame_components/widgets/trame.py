@@ -43,7 +43,7 @@ class ClientStateChange(HtmlElement):
     """
 
     def __init__(self, children=None, **kwargs):
-        super().__init__("trame-client-state-change", children, **kwargs)
+        super().__init__("tc-client-state-change", children, **kwargs)
         self._attr_names += [
             ("value", ":value"),
             "immediate",
@@ -65,7 +65,7 @@ class ClientTriggers(HtmlElement):
 
     def __init__(self, ref="trame_triggers", children=None, **kwargs):
         self.__name = ref
-        super().__init__("trame-client-triggers", children=None, ref=ref, **kwargs)
+        super().__init__("tc-client-triggers", children=None, ref=ref, **kwargs)
         self._attr_names += ["ref"]
         self._event_names += list(kwargs.keys())
 
@@ -89,7 +89,7 @@ class Cursor(HtmlElement):
     """
 
     def __init__(self, **kwargs):
-        super().__init__("trame-cursor", **kwargs)
+        super().__init__("tc-cursor", **kwargs)
         self._attr_names += ["active", "cursors"]
 
 
@@ -113,7 +113,7 @@ class LifeCycleMonitor(HtmlElement):
     """
 
     def __init__(self, children=None, **kwargs):
-        super().__init__("trame-life-cycle-monitor", children, **kwargs)
+        super().__init__("tc-life-cycle-monitor", children, **kwargs)
         self._attr_names += [
             "name",
             "type",
@@ -153,7 +153,7 @@ class MouseTrap(HtmlElement):
     """
 
     def __init__(self, **kwargs):
-        super().__init__("trame-mouse-trap", **kwargs)
+        super().__init__("tc-mouse-trap", **kwargs)
         self._attributes["_trame_mapping"] = ':mapping="trame__mousetrap"'
         self._event_names += [*kwargs.keys()]
 
@@ -189,7 +189,7 @@ class SizeObserver(HtmlElement):
     """
 
     def __init__(self, _name, **kwargs):
-        super().__init__("trame-size-observer", **kwargs)
+        super().__init__("tc-size-observer", **kwargs)
         self._attr_names += [
             "name",
         ]
@@ -241,7 +241,7 @@ class FloatCard(HtmlElement):
     """
 
     def __init__(self, children=None, **kwargs):
-        super().__init__("trame-float-card", children, **kwargs)
+        super().__init__("tc-float-card", children, **kwargs)
         self._attr_names += [
             "handle_color",
             "handle_position",
@@ -292,7 +292,7 @@ class ListBrowser(HtmlElement):
     """
 
     def __init__(self, children=None, **kwargs):
-        super().__init__("trame-list-browser", children, **kwargs)
+        super().__init__("tc-list-browser", children, **kwargs)
         self._attr_names += [
             "path_icon",
             "path_selected_icon",
@@ -350,7 +350,7 @@ class GitTree(HtmlElement):
     """
 
     def __init__(self, children=None, **kwargs):
-        super().__init__("trame-git-tree", children, **kwargs)
+        super().__init__("tc-git-tree", children, **kwargs)
         self._attr_names += [
             "sources",
             "actives",
@@ -406,7 +406,7 @@ class XaiHeatMap(HtmlElement):
     """
 
     def __init__(self, children=None, **kwargs):
-        super().__init__("trame-xai-heat-map", children, **kwargs)
+        super().__init__("tc-xai-heat-map", children, **kwargs)
         self._attr_names += [
             "heatmap",
             "shape",
@@ -461,7 +461,7 @@ class XaiImage(HtmlElement):
     """
 
     def __init__(self, children=None, **kwargs):
-        super().__init__("trame-xai-image", children, **kwargs)
+        super().__init__("tc-xai-image", children, **kwargs)
         self._attr_names += [
             "src",
             "max_height",
@@ -498,7 +498,7 @@ class XaiImage(HtmlElement):
 
 class LineSeed(HtmlElement):
     def __init__(self, children=None, **kwargs):
-        super().__init__("trame-line-seed", children, **kwargs)
+        super().__init__("tc-line-seed", children, **kwargs)
         self._attr_names += [
             ("point_1", "point1"),
             ("point_2", "point2"),

@@ -13,17 +13,16 @@ import TrameXaiImage from "./TrameXaiImage";
 import TrameLineSeed from "./TrameLineSeed";
 
 export default {
-  TrameClientStateChange,
-  TrameClientTriggers,
-  TrameCursor,
-  TrameFloatCard,
-  TrameGitTree,
-  TrameLifeCycleMonitor,
-  TrameListBrowser,
-  TrameMouseTrap,
-  TrameSizeObserver,
-  TrameXaiHeatMap,
-  TrameXaiImage,
-
-  TrameLineSeed,
+  TcClientStateChange: TrameClientStateChange,
+  TcClientTriggers: TrameClientTriggers,
+  TcCursor: TrameCursor,
+  TcFloatCard: TrameFloatCard,
+  TcGitTree: TrameGitTree,
+  TcLifeCycleMonitor: TrameLifeCycleMonitor,
+  TcListBrowser: TrameListBrowser,
+  TcMouseTrap: TrameMouseTrap,
+  TcSizeObserver: TrameSizeObserver,
+  TcXaiHeatMap: TrameXaiHeatMap,
+  TcXaiImage: TrameXaiImage,
+  TcLineSeed: TrameLineSeed,
 };
