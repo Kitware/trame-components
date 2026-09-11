@@ -1,4 +1,4 @@
-.. |pypi_download| image:: https://img.shields.io/pypi/dm/trame-components
+.. |pypi_download| image:: https://kitware.github.io/trame/downloads/trame-components.svg
 
 trame-components: vue.js utility widgets |pypi_download|
 ===========================================================================
