@@ -1,0 +1,90 @@
+[project]
+name = "trame-components"
+version = "2.5.0"
+description = "Helper widgets for trame"
+authors = [{ name = "Kitware Inc." }]
+dependencies = [
+    "trame-client",
+]
+requires-python = ">=3.10"
+readme = "README.rst"
+license = { text = "Apache License 2.0" }
+keywords = ["Python", "Interactive", "Web", "Application", "Framework"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Web Environment",
+    "License :: OSI Approved :: Apache Software License",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Software Development :: Libraries :: Application Frameworks",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pre-commit",
+    "ruff",
+]
+
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build]
+include = [
+    "/src/**/*.py",
+    "/src/trame_components/LICENSE",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = [
+    "src/trame",
+    "src/trame_components",
+]
+
+
+[tool.semantic_release]
+version_toml = [
+    "pyproject.toml:project.version",
+]
+version_variables = [
+    "src/trame_components/__init__.py:__version__",
+]
+build_command = "pip install uv && uv build"
+commit_parser = "conventional"
+
+[tool.semantic_release.publish]
+dist_glob_patterns = ["dist/*"]
+upload_to_vcs_release = true
+
+[tool.ruff]
+line-length = 88
+indent-width = 4
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "W", "F"]
+ignore = []
+fixable = ["ALL"]
+unfixable = []
+
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+docstring-code-format = true
+
+# This only has an effect when the `docstring-code-format` setting is
+# enabled.
+docstring-code-line-length = "dynamic"
+
+[tool.ruff.lint.pycodestyle]
+max-line-length = 120
+
+
+[lint.pydocstyle]
+convention = "google"
