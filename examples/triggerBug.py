@@ -20,5 +20,4 @@ with DivLayout(server):
     # trame.ListBrowser()  # Uncommenting this line makes the `exit` event not trigger the callback
 
 if __name__ == "__main__":
-
     server.start()

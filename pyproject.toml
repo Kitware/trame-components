@@ -86,5 +86,5 @@ docstring-code-line-length = "dynamic"
 max-line-length = 120
 
 
-[lint.pydocstyle]
+[tool.lint.pydocstyle]
 convention = "google"
