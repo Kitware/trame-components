@@ -1,1 +1,1 @@
-from trame_components.module import *
+from trame_components.module import *  # noqa: F403

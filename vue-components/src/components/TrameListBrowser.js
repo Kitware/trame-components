@@ -121,7 +121,7 @@ export default {
           return true;
         }
         const txt = [item.text.toLowerCase(), item.type.toLowerCase()].join(
-          "  "
+          "  ",
         );
         const tokens = filterValues.value;
         for (let i = 0; i < tokens.length; i++) {

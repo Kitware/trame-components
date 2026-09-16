@@ -54,10 +54,10 @@ export default {
     const z2 = ref(props.point2[2]);
 
     const pointColor2 = computed(() =>
-      unref(props.nbSliders) == 2 ? "#4CAF50" : "#2196F3"
+      unref(props.nbSliders) == 2 ? "#4CAF50" : "#2196F3",
     );
     const step = computed(
-      () => (props.bounds[5] - props.bounds[4]) / props.numberOfSteps
+      () => (props.bounds[5] - props.bounds[4]) / props.numberOfSteps,
     );
     // const xScaling = computed(() => (props.bounds[1] - props.bounds[0]) / 500);
     const yScaling = computed(() => (props.bounds[3] - props.bounds[2]) / 500);
@@ -177,14 +177,14 @@ export default {
       (v) => {
         [x1.value, y1.value, z1.value] = v;
         update2DPoints();
-      }
+      },
     );
     watch(
       () => props.point2,
       (v) => {
         [x2.value, y2.value, z2.value] = v;
         update2DPoints();
-      }
+      },
     );
     watch(() => props.nbSliders, pushLineSeed);
 
@@ -253,31 +253,31 @@ export default {
   </svg>
   <v-col class="pt-0">
     <v-row>
-        <v-slider 
+        <v-slider
             v-show="nbSliders > 1"
-            v-model="x2" 
-            track-color="green" 
-            color="green" 
-            density="compact" 
-            hide-details 
-            @update:modelValue="pushLineSeed" 
-            :min="bounds[0]" 
-            :max="bounds[1]" 
-            :step="step" 
+            v-model="x2"
+            track-color="green"
+            color="green"
+            density="compact"
+            hide-details
+            @update:modelValue="pushLineSeed"
+            :min="bounds[0]"
+            :max="bounds[1]"
+            :step="step"
         />
     </v-row>
     <v-row>
-        <v-slider 
+        <v-slider
             v-show="nbSliders > 0"
-            v-model="x1" 
-            track-color="blue" 
-            color="blue" 
-            density="compact"  
-            hide-details 
+            v-model="x1"
+            track-color="blue"
+            color="blue"
+            density="compact"
+            hide-details
             @update:modelValue="pushLineSeed"
-            :min="bounds[0]" 
-            :max="bounds[1]" 
-            :step="step" 
+            :min="bounds[0]"
+            :max="bounds[1]"
+            :step="step"
         />
     </v-row>
   </v-col>

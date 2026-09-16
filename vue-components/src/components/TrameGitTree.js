@@ -280,14 +280,14 @@ export default {
           activesToRender.value = newActive;
           emit(
             "activesChange",
-            activesToRender.value.map((i) => nodes.value[i].id)
+            activesToRender.value.map((i) => nodes.value[i].id),
           );
         } else {
           newActive[0] = yVal;
           activesToRender.value = newActive;
           emit(
             "activesChange",
-            activesToRender.value.map((i) => nodes.value[i].id)
+            activesToRender.value.map((i) => nodes.value[i].id),
           );
         }
       }
@@ -381,8 +381,8 @@ export default {
             props.width,
             props.deltaY,
             props.actionSize,
-            props.actionMap
-          )
+            props.actionMap,
+          ),
         );
 
         return {
@@ -449,7 +449,7 @@ export default {
       width="1000"
       :fill="activeBackground"
     />
-  
+
     <!-- branches [vertical lines] -->
     <path
       v-for="(branch, idx) in branchesToRender"
@@ -458,7 +458,7 @@ export default {
       :stroke="branch.stroke"
       :stroke-width="stroke"
     />
-  
+
     <!-- forks [curvy connection] -->
     <path
       v-for="(fork, idx) in forksToRender"
@@ -468,7 +468,7 @@ export default {
       :stroke-width="stroke"
       fill="transparent"
     />
-  
+
     <!-- nodes [circles] -->
     <g
       v-for="(node, idx) in nodesToRender"
@@ -482,9 +482,9 @@ export default {
         :r="node.circle.radius"
         :stroke="node.circle.stroke"
         :fill="node.circle.fill"
-  
+
         :stroke-width="stroke"
-  
+
         v-on:click="toggleVisibility"
       />
       <text
@@ -494,19 +494,19 @@ export default {
         :y="node.text.y"
         :fill="node.text.fill"
         :font-weight="node.text.fontWeight"
-  
+
         :font-size="fontSize"
       >
         {{node.text.content}}
       </text>
       <image
-  
+
         v-for="(action, idx) in node.actions"
         :key="action.name"
-  
+
         :data-id="node.id"
         :data-name="action.name"
-  
+
         :x="action.x"
         :y="action.y"
         :width="action.size"
@@ -516,6 +516,6 @@ export default {
         @click="triggerAction"
       />
     </g>
-  </svg>  
+  </svg>
     `,
 };

@@ -20,7 +20,7 @@ export default {
     }
 
     const activeCursor = computed(
-      () => props.cursors[props.active] || "default"
+      () => props.cursors[props.active] || "default",
     );
     watch(() => activeCursor.value, updateCursor);
 

@@ -135,7 +135,7 @@ export default {
           [left.value, top.value] = pos;
           lastUpdate = JSON.stringify(pos);
         }
-      }
+      },
     );
 
     const positionStyle = computed(() => {

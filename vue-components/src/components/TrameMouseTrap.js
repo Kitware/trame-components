@@ -40,7 +40,7 @@ export default {
               return false;
             }
           },
-          listen
+          listen,
         );
       });
     }

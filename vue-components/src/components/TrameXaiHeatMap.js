@@ -132,7 +132,7 @@ export default {
         width.value,
         height.value,
         props.heatmap,
-        toColor
+        toColor,
       );
       const ctx = canvasElem.value.getContext("2d");
       ctx.imageSmoothingEnabled = false;
@@ -168,7 +168,7 @@ export default {
       (preset) => {
         lut.applyColorMap(vtkColorMaps.getPresetByName(preset));
         deferedRender();
-      }
+      },
     );
 
     // LifeCycles -------------------------------------------------------------
@@ -199,12 +199,12 @@ export default {
     };
   },
   template: `
-    <canvas 
-        ref="canvasElem" 
-        :width="width" 
+    <canvas
+        ref="canvasElem"
+        :width="width"
         :height="height"
-        @mousemove="onMouseMove" 
-        @mouseenter="onMouseEnter" 
+        @mousemove="onMouseMove"
+        @mouseenter="onMouseEnter"
         @mouseleave="emit('exit')"
     >
     </canvas>`,

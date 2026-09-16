@@ -1,4 +1,4 @@
-from trame_components.widgets.trame import *
+from trame_components.widgets.trame import *  # noqa: F403
 
 
 def initialize(server):
